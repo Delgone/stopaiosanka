@@ -1,250 +1,366 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Стопа Йосанка</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffffff;
-            color: #333;
-        }
-        
-        header {
-            background-color: #43509e;
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        header .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        
-        nav a:hover {
-            opacity: 0.8;
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, #43509e 0%, #2d365f 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .btn {
-            background-color: white;
-            color: #43509e;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .products {
-            padding: 80px 20px;
-            background-color: #f9f9f9;
-        }
-        
-        .products h2 {
-            text-align: center;
-            font-size: 36px;
-            color: #43509e;
-            margin-bottom: 50px;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(67, 80, 158, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(67, 80, 158, 0.2);
-        }
-        
-        .product-image {
-            width: 100%;
-            height: 250px;
-            background-color: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 14px;
-        }
-        
-        .product-info {
-            padding: 20px;
-        }
-        
-        .product-info h3 {
-            color: #43509e;
-            margin-bottom: 10px;
-            font-size: 22px;
-        }
-        
-        .product-info p {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        
-        .product-price {
-            font-size: 24px;
-            color: #43509e;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .product-card .btn {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-        }
-        
-        footer {
-            background-color: #43509e;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        
-        footer p {
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Научно-клинический центр заболеваний стопы и осанки</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #111827;
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #ffffff;
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-block img {
+      height: 56px;
+      width: auto;
+    }
+
+    .header-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+
+    .header-subtitle {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: #f97316;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background-color: #ea580c;
+    }
+
+    main {
+      padding: 32px 0 40px;
+    }
+
+    section {
+      padding: 24px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 0 0 12px;
+      color: #1f2937;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .results-block {
+      margin-top: 16px;
+    }
+
+    .results-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .photo-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .photo-card {
+      background-color: #f9fafb;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #e5e7eb;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .photo-label {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .photo-text {
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .contacts-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px;
+    }
+
+    .contacts-list li {
+      margin-bottom: 4px;
+    }
+
+    .addresses {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .addresses li {
+      margin-bottom: 4px;
+    }
+
+    .map-placeholder {
+      margin-top: 12px;
+      padding: 16px;
+      background-color: #eff6ff;
+      border-radius: 12px;
+      border: 1px dashed #93c5fd;
+      font-size: 13px;
+      color: #1d4ed8;
+    }
+
+    footer {
+      background-color: #0f172a;
+      color: #e5e7eb;
+      padding: 16px 0;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #bfdbfe;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-row {
+        grid-template-columns: 1fr;
+      }
+
+      .header-title {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">Стопа Йосанка</div>
-            <nav>
-                <ul>
-                    <li><a href="#products">Продукция</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
-                </ul>
-            </nav>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo-block">
+        <img src="logo.jpg" alt="Логотип центра">
+        <div>
+          <h1 class="header-title">Научно-клинический центр заболеваний стопы и осанки</h1>
+          <p class="header-subtitle">Индивидуальные ортопедические стельки, диагностика и профилактика для детей и взрослых</p>
         </div>
-    </header>
-    
-    <section class="hero">
-        <div class="container">
-            <h1>Индивидуальные ортопедические стельки</h1>
-            <p>Комфорт и здоровье ваших ног</p>
-            <button class="btn">Узнать больше</button>
-        </div>
+      </div>
+      <a class="btn-primary" href="https://n819431.yclients.com" target="_blank" rel="noopener noreferrer">
+        Записаться онлайн
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- О центре -->
+    <section id="about">
+      <h2>О центре</h2>
+      <p>Научно-клинический центр заболеваний стопы и осанки — клиника, специализирующаяся на лечении и профилактике заболеваний стопы и опорно-двигательного аппарата у детей и взрослых.</p>
+      <p>В центре работают высококвалифицированные врачи, включая ортопедов-травматологов и остеопатов, которые используют индивидуальный подход к каждому пациенту.</p>
+      <p>Мы предлагаем широкий спектр услуг, включая изготовление индивидуальных ортопедических стелек, профессиональный массаж и подологические услуги для ухода за стопами.</p>
     </section>
-    
-    <section id="products" class="products">
-        <div class="container">
-            <h2>Наша продукция</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="img/insoles-adult.jpeg" alt="Стельки для взрослых" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="product-info">
-                        <h3>Стельки для взрослых</h3>
-                        <p>Комфортные и эффективные ортопедические стельки, разработанные специально для взрослых.</p>
-                        <div class="product-price">от 5000 ₽</div>
-                        <button class="btn">Заказать</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="img/insoles-kid.jpeg" alt="Стельки для детей" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="product-info">
-                        <h3>Стельки для детей</h3>
-                        <p>Безопасные и удобные стельки для правильного развития стопы у детей.</p>
-                        <div class="product-price">от 3500 ₽</div>
-                        <button class="btn">Заказать</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="img/logo.jpg" alt="Логотип" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="product-info">
-                        <h3>Премиум коллекция</h3>
-                        <p>Эксклюзивные стельки из натуральных материалов премиум-класса.</p>
-                        <div class="product-price">от 7500 ₽</div>
-                        <button class="btn">Заказать</button>
-                    </div>
-                </div>
-            </div>
+
+    <!-- Стельки и результаты -->
+    <section id="insoles">
+      <h2>Индивидуальные стельки: до и после</h2>
+      <p>Индивидуальные ортопедические стельки помогают корректировать положение стопы, перераспределять нагрузку на опорно-двигательный аппарат и улучшать качество жизни детей и взрослых.</p>
+
+      <div class="results-block">
+        <div class="results-title">Результаты у детей</div>
+        <div class="photo-row">
+          <div class="photo-card">
+            <img src="insoles-kid.jpeg" alt="Дети — до стелек">
+            <div class="photo-label">До</div>
+            <div class="photo-text">Неправильная постановка стоп и осанки, повышенная нагрузка на связки и суставы.</div>
+          </div>
+          <div class="photo-card">
+            <img src="insoles-kid.jpeg" alt="Дети — после стелек">
+            <div class="photo-label">После</div>
+            <div class="photo-text">Улучшение позиции стоп, более равномерное распределение нагрузки и поддержка правильной осанки.</div>
+          </div>
         </div>
+      </div>
+
+      <div class="results-block">
+        <div class="results-title">Результаты у взрослых</div>
+        <div class="photo-row">
+          <div class="photo-card">
+            <img src="insoles-adult.jpeg" alt="Взрослые — до стелек">
+            <div class="photo-label">До</div>
+            <div class="photo-text">Избыточная нагрузка на суставы, стопы и поясницу, дискомфорт при ходьбе.</div>
+          </div>
+          <div class="photo-card">
+            <img src="insoles-adult.jpeg" alt="Взрослые — после стелек">
+            <div class="photo-label">После</div>
+            <div class="photo-text">Более физиологичное положение стопы, комфорт при ходьбе и снижение болевых ощущений.</div>
+          </div>
+        </div>
+      </div>
     </section>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Стопа Йосанка. Все права защищены.</p>
-            <p>Телефон: +7 (989) 811-07-70</p>
-            <p>Email: info@stopaiosanka.ru</p>
+
+    <!-- Адреса и карта -->
+    <section id="locations">
+      <h2>Наши центры</h2>
+      <div class="two-columns">
+        <div>
+          <p><strong>Адреса представительств:</strong></p>
+          <ul class="addresses">
+            <li>г. Краснодар, Рождественская наб., 2</li>
+            <li>г. Краснодар, ул. Стахановская, 1/5, к. 1</li>
+            <li>г. Анапа, ул. Ленина, д. 183</li>
+          </ul>
         </div>
-    </footer>
+        <div>
+          <div class="map-placeholder">
+            Здесь можно встроить карту (Яндекс.Карты, Google Maps или другую) с отметками наших центров.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты и запись -->
+    <section id="contacts">
+      <h2>Контакты и запись</h2>
+      <ul class="contacts-list">
+        <li><strong>Телефон:</strong> <a href="tel:+79181513800">+7 918 151 38 00</a></li>
+        <li><strong>Онлайн-запись:</strong> <a href="https://n819431.yclients.com" target="_blank" rel="noopener noreferrer">https://n819431.yclients.com</a></li>
+      </ul>
+      <p>Выберите удобный для вас центр и запишитесь онлайн или по телефону.</p>
+      <a class="btn-primary" href="https://n819431.yclients.com" target="_blank" rel="noopener noreferrer">
+        Записаться онлайн
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="Логотип центра">
+        <span>Научно-клинический центр заболеваний стопы и осанки</span>
+      </div>
+      <div class="footer-links">
+        <span>Тел.: <a href="tel:+79181513800">+7 918 151 38 00</a></span>
+        <span>Онлайн-запись: <a href="https://n819431.yclients.com" target="_blank" rel="noopener noreferrer">Yclients</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
