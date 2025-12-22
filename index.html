@@ -57,6 +57,31 @@
             .nav-links { display: none; }
             .before-after { grid-template-columns: 1fr; }
         }
+        
+    .clinics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .clinic-info {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .clinic-info h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .clinic-info p {
+      color: var(--gray);
+      margin: 0.5rem 0;
+    }
     </style>
 </head>
 <body>
@@ -129,22 +154,30 @@
     </section>
 
     <section id="contacts" class="contacts">
-        <div class="container">
-            <h3>Контакты и запись</h3>
-            <div class="address-grid">
-                <div class="address">
-                    <h4>🏢 Краснодар, Рождественская наб., 2</h4>
-                    <p><strong>+7 (918) 151-38-00</strong></p>
-                </div>
-                <div class="address">
-                    <h4>🏢 Краснодар, ул. Стахановская 1/5, к. 1</h4>
-                </div>
-                <div class="address">
-                    <h4>🏢 Анапа, ул. Ленина, д. 183</h4>
-                </div>
-            </div>
-            <a href="https://n819431.yclients.com" class="btn" style="background: white; color: var(--primary); margin-top: 2rem;" target="_blank">Записаться онлайн</a>
+            <div class="container">
+      <h3>Адреса клиник</h3>
+      <iframe id="map" src="https://yandex.ru/map-widget/v1/?ll=38.0,45&z=12&pt=38.97612,45.03616;pm2dbl&pt=38.95522,45.04175;pm2dbl&pt=41.14778,44.87472;pm2dbl" width="100%" height="500" frameborder="0" style="border-radius: 15px; margin: 2rem 0;"></iframe>
+      
+      <div class="clinics-grid">
+        <div class="clinic-info">
+          <h4>📍 Краснодар - Рождественская</h4>
+          <p>Рождественская наб., 2б</p>
+          <p><strong>+7 (918) 151-38-00</strong></p>
         </div>
+        
+        <div class="clinic-info">
+          <h4>📍 Краснодар - Стаханова</h4>
+          <p>ул. Стаханова 1/5, к. 1б</p>
+          <p><strong>+7 (918) 151-38-00</strong></p>
+        </div>
+        
+        <div class="clinic-info">
+          <h4>📍 Анапа</h4>
+          <p>ул. Ленина, д. 183</p>
+          <p><strong>+7 (918) 151-38-00</strong></p>
+        </div>
+      </div>
+    </div>
     </section>
 
     <footer>
