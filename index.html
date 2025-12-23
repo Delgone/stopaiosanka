@@ -2,47 +2,34 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Центр заболеваний стопы и осанки</title>
+  <title>Научно-клинический центр заболеваний стопы и осанки</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Опционально: красивый шрифт
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  -->
   <style>
     :root {
-      --bg: #0b1120;
-      --bg-soft: #020617;
-      --card: #020617;
-      --card-soft: #030712;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.1);
-      --accent-strong: #0ea5e9;
-      --muted: #9ca3af;
-      --text: #f9fafb;
-      --border: #1f2937;
-      --radius-xl: 24px;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
-      --shadow-chip: 0 10px 30px rgba(8, 47, 73, 0.6);
+      --primary: #43509e;
+      --primary-dark: #333a7a;
+      --text-main: #222222;
+      --text-muted: #666666;
+      --bg-light: #f5f7ff;
+      --border-color: #e0e3f5;
+      --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-      background: radial-gradient(circle at top left, #0ea5e9 0, #020617 40%, #000000 100%);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background: var(--white);
+      line-height: 1.5;
     }
 
     a {
-      color: var(--accent);
+      color: var(--primary);
       text-decoration: none;
     }
 
@@ -50,836 +37,549 @@
       text-decoration: underline;
     }
 
-    .page-wrap {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
     .container {
       width: 100%;
-      max-width: 1180px;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 24px 18px 32px;
+      padding: 0 16px;
     }
 
-    /* HERO */
+    /* HEADER */
 
-    header {
-      padding-top: 12px;
+    .header {
+      border-bottom: 1px solid var(--border-color);
+      background: var(--white);
     }
+
+    .header-top {
+      background: var(--white);
+      padding: 12px 0;
+    }
+
+    .header-top-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      max-width: 420px;
+      text-transform: uppercase;
+    }
+
+    .header-contacts {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .header-phone {
+      text-align: right;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .header-phone a {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .header-bottom {
+      background: var(--primary);
+      padding: 10px 0;
+    }
+
+    .header-bottom-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    .search {
+      margin-left: auto;
+      max-width: 260px;
+      width: 100%;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid #2e366f;
+      font-size: 13px;
+    }
+
+    /* HERO / TOP SECTION */
 
     .hero {
-      border-radius: 32px;
-      padding: 26px 24px 26px;
-      background: radial-gradient(circle at top right, rgba(56,189,248,0.2) 0, rgba(15,23,42,0.98) 35%, rgba(15,23,42,1) 100%);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148, 163, 184, 0.15);
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -120px;
-      background:
-        radial-gradient(circle at 10% 0, rgba(56,189,248,0.16) 0, transparent 45%),
-        radial-gradient(circle at 90% 10%, rgba(37,99,235,0.14) 0, transparent 55%);
-      opacity: 0.9;
-      z-index: -1;
+      background: var(--bg-light);
+      padding: 32px 0 24px;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.9fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .logo-chip {
-      width: 44px;
-      height: 44px;
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at 30% 20%, rgba(56,189,248,0.45), rgba(15,23,42,1));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .logo-chip img {
-      width: 70%;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 6px 16px rgba(15,23,42,0.7));
-    }
-
-    .logo-text {
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .badge-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .badge {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      border-radius: 999px;
-      padding: 5px 12px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      background: rgba(15,23,42,0.85);
-      display: inline-flex;
+      gap: 24px;
       align-items: center;
-      gap: 6px;
-      color: #e5e7eb;
     }
 
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: radial-gradient(circle, #22c55e 0, #16a34a 40%, #052e16 100%);
-      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    .hero-text {
+      flex: 1 1 260px;
+      min-width: 260px;
     }
 
     .hero-title {
-      font-size: clamp(24px, 3.1vw, 32px);
+      font-size: 22px;
       font-weight: 700;
-      letter-spacing: -0.03em;
-      margin: 0 0 10px;
-    }
-
-    .hero-title span {
-      color: var(--accent-strong);
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
     }
 
     .hero-subtitle {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 18px;
+      font-size: 16px;
+      color: var(--text-main);
+      margin-bottom: 16px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 16px;
+      gap: 12px;
+      margin-top: 8px;
     }
 
-    .btn-primary {
-      display: inline-flex;
+    .hero-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .hero-media {
+      flex: 0 0 320px;
+      max-width: 320px;
+      min-height: 160px;
+      border-radius: 6px;
+      border: 1px dashed var(--primary);
+      background: var(--white);
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 11px 22px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: radial-gradient(circle at 10% 0, #38bdf8, #0ea5e9);
-      color: #0b1120;
-      font-weight: 600;
-      font-size: 13px;
-      box-shadow: var(--shadow-chip);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.05);
-      transform: translateY(-0.5px);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15,23,42,0.7);
-      color: #e5e7eb;
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(15,23,42,0.95);
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-meta-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.9);
-    }
-
-    /* HERO RIGHT */
-
-    .hero-card {
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.22), rgba(15,23,42,0.98));
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      padding: 16px 16px 14px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      font-size: 12px;
-      color: #e5e7eb;
-    }
-
-    .hero-card-title {
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hero-tag-soft {
-      font-size: 10px;
-      border-radius: 999px;
-      padding: 3px 8px;
-      background: rgba(15,23,42,0.85);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.9;
-    }
-
-    .hero-card-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 11px;
-    }
-
-    .hero-card-badge {
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: #e5e7eb;
-    }
-
-    .hero-card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .hero-photo-card {
-      background: rgba(15,23,42,0.9);
-      border-radius: var(--radius-lg);
-      padding: 9px;
-      border: 1px solid rgba(148, 163, 184, 0.3);
       text-align: center;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
+      padding: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
     }
 
-    .hero-photo-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .hero-photo-card img {
-      width: 100%;
-      border-radius: 14px;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .hero-photo-text {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .hero-card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .hero-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .hero-pill {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 3px 8px;
-      background: rgba(15,23,42,0.8);
-    }
-
-    /* MAIN SECTIONS */
-
-    main {
-      flex: 1;
-      padding: 18px 0 10px;
-    }
-
-    .grid-main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-      gap: 22px;
-      align-items: flex-start;
-      margin-top: 26px;
-    }
+    /* SECTION BASE */
 
     section {
-      margin-bottom: 18px;
-      border-radius: var(--radius-xl);
-      background: rgba(15,23,42,0.96);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 18px 18px 16px;
-      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+      padding: 40px 0;
     }
 
-    section h2 {
-      font-size: 17px;
-      margin: 0 0 8px;
-      letter-spacing: 0.04em;
+    h2.section-title {
+      font-size: 20px;
+      font-weight: 700;
       text-transform: uppercase;
-      color: #e5e7eb;
+      color: var(--primary);
+      margin-bottom: 16px;
     }
 
     .section-subtitle {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    p {
-      margin: 0 0 9px;
       font-size: 14px;
-      color: #e5e7eb;
+      color: var(--text-muted);
+      margin-bottom: 24px;
     }
 
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
+    /* ABOUT */
 
-    .chip {
-      font-size: 11px;
-      border-radius: 999px;
-      padding: 4px 10px;
-      background: rgba(15,23,42,0.8);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--muted);
-    }
-
-    .results-group {
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 6px;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 24px;
+      align-items: flex-start;
     }
 
-    .result-card {
-      background: radial-gradient(circle at 10% 0, rgba(56,189,248,0.18), rgba(15,23,42,0.98));
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 10px;
-      box-shadow: 0 14px 35px rgba(15,23,42,0.9);
+    .about-text p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-main);
     }
 
-    .result-title {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #e5e7eb;
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .about-text p:last-child {
+      margin-bottom: 0;
     }
 
-    .result-tag {
-      font-size: 10px;
-      padding: 3px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15,23,42,0.8);
-      color: var(--muted);
-    }
-
-    .result-photo-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .result-photo {
-      background: rgba(15,23,42,0.9);
-      border-radius: var(--radius-md);
-      padding: 7px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      text-align: center;
-    }
-
-    .result-photo img {
-      width: 100%;
-      border-radius: 10px;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .result-photo-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin-bottom: 3px;
-    }
-
-    .result-photo-text {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* LOCATIONS / CONTACTS SIDE */
-
-    .side-card {
-      margin-bottom: 16px;
-    }
-
-    .locations-list,
-    .contacts-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 13px;
-      color: #e5e7eb;
-    }
-
-    .locations-list li,
-    .contacts-list li {
-      padding: 7px 9px;
-      border-radius: 10px;
-      background: rgba(15,23,42,0.85);
-      border: 1px solid rgba(55,65,81,0.85);
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .badge-mini {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border-radius: 999px;
-      padding: 3px 8px;
-      background: rgba(15,23,42,0.95);
-      border: 1px solid rgba(148,163,184,0.5);
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .map-chip {
-      margin-top: 9px;
-      padding: 10px 11px;
-      border-radius: 14px;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      background: rgba(15,23,42,0.85);
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .contacts-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 12px 0 18px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-      border-radius: 18px;
-      border: 1px solid rgba(31,41,55,0.9);
-      background: rgba(15,23,42,0.96);
-      padding: 10px 14px;
-    }
-
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .footer-logo {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: radial-gradient(circle at 30% 20%, rgba(56,189,248,0.45), rgba(15,23,42,1));
+    .about-media {
+      min-height: 180px;
+      border-radius: 6px;
+      border: 1px dashed var(--primary);
+      background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      padding: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
     }
 
-    .footer-logo img {
-      width: 70%;
-      height: auto;
-      object-fit: contain;
+    /* INSOLES */
+
+    .insoles {
+      background: var(--bg-light);
     }
 
-    .footer-right {
+    .insoles p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      max-width: 760px;
+    }
+
+    /* CENTERS */
+
+    .centers-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .centers-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .center-card {
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: var(--white);
+      padding: 14px 14px 16px;
+      font-size: 14px;
+    }
+
+    .center-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .center-card p {
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .center-card .center-phone {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .centers-map {
+      border-radius: 6px;
+      border: 1px dashed var(--primary);
+      background: var(--bg-light);
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 16px;
+    }
+
+    /* FOOTER CONTACTS SHORT */
+
+    .contacts-short {
+      background: var(--primary);
+      color: var(--white);
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    .contacts-inner {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 16px;
       align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
     }
 
-    .footer-link {
-      color: var(--muted);
+    .contacts-inner a {
+      color: var(--white);
+      font-weight: 600;
     }
 
     /* RESPONSIVE */
 
     @media (max-width: 900px) {
-      .hero-inner {
+      .about-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .grid-main {
-        grid-template-columns: minmax(0, 1fr);
+
+      .centers-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-media {
+        max-width: 100%;
       }
     }
 
     @media (max-width: 640px) {
-      .hero {
-        padding: 22px 18px 20px;
-      }
-      .hero-actions {
+      .header-top-inner {
         flex-direction: column;
         align-items: flex-start;
       }
-      .results-group {
-        grid-template-columns: minmax(0, 1fr);
+
+      .header-contacts {
+        margin-left: 0;
+        justify-content: flex-start;
       }
-      .result-photo-row {
+
+      .header-bottom-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search {
+        margin-left: 0;
+        max-width: 100%;
+      }
+
+      .centers-list {
         grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
 <body>
-<div class="page-wrap">
-  <div class="container">
 
-    <!-- HERO -->
-    <header>
-      <div class="hero">
-        <div class="hero-inner">
-          <div>
-            <div class="logo-row">
-              <div class="logo-chip">
-                <img src="img/logo.jpg" alt="Логотип центра">
-              </div>
-              <div>
-                <div class="logo-text">Научно-клинический центр</div>
-                <div style="font-size:13px;color:#e5e7eb;">Заболеваний стопы и осанки</div>
-              </div>
-            </div>
-
-            <div class="badge-row">
-              <div class="badge">
-                <span class="badge-dot"></span>
-                Индивидуальные ортопедические стельки
-              </div>
-              <div class="badge">Дети и взрослые</div>
-            </div>
-
-            <h1 class="hero-title">
-              Комфортная походка и здоровая осанка <span>с первых шагов</span>
-            </h1>
-            <p class="hero-subtitle">
-              Диагностика, лечение и профилактика заболеваний стопы и опорно-двигательного аппарата у детей и взрослых с помощью индивидуальных стелек и комплексного подхода. [file:1]
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn-primary" href="https://n819431.yclients.com" target="_blank" rel="noopener noreferrer">
-                Записаться онлайн
-              </a>
-              <a class="btn-secondary" href="tel:+79181513800">
-                Позвонить в центр
-              </a>
-            </div>
-
-            <div class="hero-meta">
-              <span><span class="hero-meta-dot"></span> Краснодар и Анапа</span>
-              <span><span class="hero-meta-dot"></span> Ортопеды‑травматологи и остеопаты [file:1]</span>
-              <span><span class="hero-meta-dot"></span> Индивидуальный подход к каждому пациенту [file:1]</span>
-            </div>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <div class="container header-top-inner">
+        <a href="#" class="logo">
+          Научно‑клинический центр заболеваний стопы и осанки
+        </a>
+        <div class="header-contacts">
+          <div class="header-phone">
+            <span>Единый телефон</span>
+            <a href="tel:+79181513800">+7 (918) 151‑38‑00</a>
           </div>
-
-          <aside class="hero-card" aria-label="Пример результатов">
-            <div class="hero-card-header">
-              <div class="hero-card-title">
-                Результаты до / после
-                <span class="hero-tag-soft">реальные случаи</span>
-              </div>
-              <div class="hero-card-badges">
-                <span class="hero-card-badge">Дети</span>
-                <span class="hero-card-badge">Взрослые</span>
-              </div>
-            </div>
-
-            <div class="hero-card-grid">
-              <div class="hero-photo-card">
-                <div class="hero-photo-label">Дети</div>
-                <img src="img/insoles-kid-1.jpeg" alt="Два примера детских стоп до и после стелек">
-                <div class="hero-photo-text">
-                  На одном снимке показаны сразу два случая коррекции постановки стоп у детей: видны изменения оси стоп и более устойчивое положение после подбора стелек.
-                </div>
-              </div>
-              <div class="hero-photo-card">
-                <div class="hero-photo-label">Взрослые</div>
-                <img src="img/insoles-adult.jpeg" alt="Стопы взрослого до и после стелек">
-                <div class="hero-photo-text">
-                  Перераспределение нагрузки, уменьшение дискомфорта при ходьбе и поддержка позвоночника у взрослых пациентов.
-                </div>
-              </div>
-            </div>
-
-            <div class="hero-card-footer">
-              <div>Комплексная работа со стопой и осанкой под контролем специалистов.</div>
-              <div class="hero-pill-row">
-                <div class="hero-pill">Диагностика</div>
-                <div class="hero-pill">Стельки</div>
-                <div class="hero-pill">Подология</div>
-              </div>
-            </div>
-          </aside>
+          <a href="https://n819431.yclients.com" class="btn btn-primary">
+            Записаться онлайн
+          </a>
         </div>
       </div>
-    </header>
+    </div>
 
-    <!-- MAIN CONTENT -->
-    <main>
-      <div class="grid-main">
+    <div class="header-bottom">
+      <div class="container header-bottom-inner">
+        <nav class="nav">
+          <a href="#about">О центре</a>
+          <a href="#insoles">О стельках</a>
+          <a href="#centers">Наши центры</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+        <form class="search">
+          <input type="text" placeholder="Найти услугу или проблему...">
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-title">
+          ИЩЕТЕ КЛИНИКУ ДЛЯ ЗДОРОВЬЯ СТОПЫ И ОСАНКИ?
+        </div>
+        <div class="hero-subtitle">
+          Поможем выявить причины дискомфорта, подобрать лечение и изготовить индивидуальные ортопедические стельки для детей и взрослых.
+        </div>
+        <div class="hero-actions">
+          <a href="https://n819431.yclients.com" class="btn btn-primary">Записаться на прием</a>
+          <a href="#centers" class="btn btn-outline">Адреса наших центров</a>
+        </div>
+        <div class="hero-note">
+          Цветовая гамма сайта построена в бело‑синих оттенках, основной фирменный цвет — #43509e. [file:2]
+        </div>
+      </div>
+      <div class="hero-media">
+        Здесь можно разместить баннер или коллаж с примерами стелек, стопы и осанки (изображения до/после).
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Немного о нас</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p><strong>Научно‑клинический центр заболеваний стопы и осанки</strong> — клиника, специализирующаяся на лечении и профилактике заболеваний стопы и опорно‑двигательного аппарата у детей и взрослых. [file:2]</p>
+          <p>В центре работают высококвалифицированные ортопеды‑травматологи и остеопаты, которые используют индивидуальный подход к каждому пациенту и современные методы диагностики. [file:2]</p>
+          <p>Мы предлагаем широкий спектр услуг: изготовление индивидуальных ортопедических стелек, профессиональный массаж и подологические услуги для комплексного ухода за стопами. [file:2]</p>
+        </div>
+        <div class="about-media">
+          Блок для слайдера «до и после» ношения индивидуальных стелек (фото пациентов, результаты коррекции осанки и положения стопы).
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSOLES -->
+  <section id="insoles" class="insoles">
+    <div class="container">
+      <h2 class="section-title">Индивидуальные ортопедические стельки</h2>
+      <p>Индивидуальные стельки помогают правильно распределить нагрузку на стопу, уменьшить боль, скорректировать осанку и предотвратить развитие хронических заболеваний опорно‑двигательного аппарата. [file:2]</p>
+      <p>Изготовление стелек проводится после детального обследования, с учётом возраста, уровня активности и сопутствующих проблем пациента, с использованием современных материалов и технологий. [file:2]</p>
+    </div>
+  </section>
+
+  <!-- CENTERS -->
+  <section id="centers">
+    <div class="container">
+      <div class="centers-header">
         <div>
-          <!-- О центре -->
-          <section id="about">
-            <h2>О центре</h2>
-            <div class="section-subtitle">
-              Клиника, специализирующаяся на лечении и профилактике заболеваний стопы и опорно‑двигательного аппарата у детей и взрослых. [file:1]
-            </div>
-            <p>
-              В центре работают высококвалифицированные ортопеды‑травматологи и остеопаты, которые подбирают решения под конкретные задачи пациента — от первых шагов ребёнка до восстановления активности у взрослых. [file:1]
-            </p>
-            <p>
-              Мы используем современную диагностику, индивидуальные ортопедические стельки, профессиональный массаж и подологические услуги для комплексного ухода за стопами и осанкой. [file:1]
-            </p>
-            <div class="chip-row">
-              <div class="chip">Индивидуальные стельки</div>
-              <div class="chip">Коррекция осанки</div>
-              <div class="chip">Подологический уход</div>
-              <div class="chip">Работа с детьми и взрослыми</div>
-            </div>
-          </section>
-
-          <!-- Стельки и результаты -->
-          <section id="insoles">
-            <h2>Индивидуальные стельки</h2>
-            <div class="section-subtitle">
-              Стельки создаются под форму стопы, помогают перераспределить нагрузку, стабилизировать суставы и снизить болевые ощущения при ходьбе.
-            </div>
-
-            <div class="results-group">
-              <!-- Дети: две фотки, на каждой по два примера -->
-              <div class="result-card">
-                <div class="result-title">
-                  Дети
-                  <span class="result-tag">несколько примеров до/после</span>
-                </div>
-                <div class="result-photo-row" style="grid-template-columns: minmax(0,1fr);">
-                  <div class="result-photo">
-                    <img src="img/insoles-kid-1.jpeg" alt="Два примера детских стоп до и после стелек">
-                    <div class="result-photo-label">Пример 1–2</div>
-                    <div class="result-photo-text">
-                      На одном снимке показаны сразу два случая: до и после коррекции постановки стоп у детей, с заметным выравниванием оси и опоры.
-                    </div>
-                  </div>
-                  <div class="result-photo">
-                    <img src="img/insoles-kid-2.jpeg" alt="Ещё два примера детских стоп до и после стелек">
-                    <div class="result-photo-label">Пример 3–4</div>
-                    <div class="result-photo-text">
-                      Дополнительные примеры демонстрируют, как индивидуальные стельки помогают снизить завал стопы и перераспределить нагрузку при ходьбе.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Взрослые -->
-              <div class="result-card">
-                <div class="result-title">
-                  Взрослые
-                  <span class="result-tag">поддержка активности</span>
-                </div>
-                <div class="result-photo-row">
-                  <div class="result-photo">
-                    <img src="img/insoles-adult.jpeg" alt="Взрослые стопы до стелек">
-                    <div class="result-photo-label">До</div>
-                    <div class="result-photo-text">
-                      Избыточная нагрузка на стопы и коленные суставы, ощущение тяжести и дискомфорт при длительной ходьбе.
-                    </div>
-                  </div>
-                  <div class="result-photo">
-                    <img src="img/insoles-adult.jpeg" alt="Взрослые стопы после стелек">
-                    <div class="result-photo-label">После</div>
-                    <div class="result-photo-text">
-                      Более физиологичное положение стопы, снижение болевых ощущений и комфортная походка в течение дня.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <aside>
-          <!-- Локации -->
-          <section class="side-card" id="locations">
-            <h2>Где нас найти</h2>
-            <div class="section-subtitle">
-              Выберите удобный центр и запишитесь онлайн или по телефону.
-            </div>
-            <ul class="locations-list">
-              <li>
-                <span>г. Краснодар, Рождественская наб., 2</span>
-                <span class="badge-mini">центр</span>
-              </li>
-              <li>
-                <span>г. Краснодар, ул. Стахановская, 1/5, к. 1</span>
-                <span class="badge-mini">филиал</span>
-              </li>
-              <li>
-                <span>г. Анапа, ул. Ленина, д. 183</span>
-                <span class="badge-mini">курорт</span>
-              </li>
-            </ul>
-            <div class="map-chip">
-              Здесь можно встроить карту (Яндекс.Карты или Google Maps) с отметками всех филиалов.
-            </div>
-          </section>
-
-          <!-- Контакты -->
-          <section class="side-card" id="contacts">
-            <h2>Контакты и запись</h2>
-            <div class="section-subtitle">
-              Мы готовы ответить на вопросы и подобрать удобное время приёма.
-            </div>
-            <ul class="contacts-list">
-              <li>
-                <span>Телефон</span>
-                <span><a href="tel:+79181513800">+7 918 151 38 00</a></span>
-              </li>
-              <li>
-                <span>Онлайн‑запись</span>
-                <span><a href="https://n819431.yclients.com" target="_blank" rel="noopener noreferrer">Yclients</a></span>
-              </li>
-            </ul>
-            <div class="contacts-actions">
-              <a class="btn-primary" href="https://n819431.yclients.com" target="_blank" rel="noopener noreferrer">
-                Записаться онлайн
-              </a>
-              <a class="btn-secondary" href="tel:+79181513800">
-                Позвонить администратору
-              </a>
-            </div>
-          </section>
-        </aside>
-      </div>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-left">
-          <div class="footer-logo">
-            <img src="img/logo.jpg" alt="Логотип центра">
+          <h2 class="section-title">Наши центры</h2>
+          <div class="section-subtitle">
+            Выберите удобный адрес в Краснодаре и Анапе и запишитесь онлайн. [file:2]
           </div>
-          <span>Научно-клинический центр заболеваний стопы и осанки</span>
         </div>
-        <div class="footer-right">
-          <span class="footer-link">Краснодар · Анапа</span>
-          <span class="footer-link">Тел.: <a href="tel:+79181513800">+7 918 151 38 00</a></span>
-          <span class="footer-link"><a href="https://n819431.yclients.com" target="_blank" rel="noopener noreferrer">Онлайн‑запись</a></span>
-        </div>
+        <a href="https://n819431.yclients.com" class="btn btn-primary">
+          Онлайн‑запись во все центры
+        </a>
       </div>
-    </footer>
 
-  </div>
-</div>
+      <div class="centers-list">
+        <article class="center-card">
+          <h3>Центр на Рождественской набережной</h3>
+          <p>г. Краснодар, Рождественская наб., 2</p>
+          <p class="center-phone"><a href="tel:+79181513800">+7 (918) 151‑38‑00</a></p>
+          <a href="https://n819431.yclients.com" class="btn btn-outline">
+            Записаться в центр
+          </a>
+        </article>
+
+        <article class="center-card">
+          <h3>Центр на Стахановской</h3>
+          <p>г. Краснодар, ул. Стахановская, 1/5, к. 1</p>
+          <p class="center-phone"><a href="tel:+79181513800">+7 (918) 151‑38‑00</a></p>
+          <a href="https://n819431.yclients.com" class="btn btn-outline">
+            Записаться в центр
+          </a>
+        </article>
+
+        <article class="center-card">
+          <h3>Центр в Анапе</h3>
+          <p>г. Анапа, ул. Ленина, д. 183</p>
+          <p class="center-phone"><a href="tel:+79181513800">+7 (918) 151‑38‑00</a></p>
+          <a href="https://n819431.yclients.com" class="btn btn-outline">
+            Записаться в центр
+          </a>
+        </article>
+      </div>
+
+      <div class="centers-map" id="contacts">
+        Здесь будет интерактивная карта (Яндекс/Google) с 3 метками:  
+        Краснодар, Рождественская наб., 2; Краснодар, ул. Стахановская, 1/5, к. 1; Анапа, ул. Ленина, 183. [file:2]
+      </div>
+    </div>
+  </section>
+
+  <!-- SHORT CONTACTS -->
+  <section class="contacts-short">
+    <div class="container contacts-inner">
+      <div>
+        <strong>Единый телефон:</strong>
+        <a href="tel:+79181513800">+7 (918) 151‑38‑00</a>
+      </div>
+      <div>
+        <strong>Онлайн‑запись:</strong>
+        <a href="https://n819431.yclients.com">n819431.yclients.com</a>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
