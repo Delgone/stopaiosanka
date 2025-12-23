@@ -57,10 +57,15 @@
     }
 
     .about-image {
-      max-width: 400px;   /* нужная максимальная ширина */
+      max-width: 800px;   /* нужная максимальная ширина */
       width: 100%;        /* чтобы не вылезала за блок */
       height: auto;       /* правильные пропорции */
-      border-radius: 8px; /* по желанию, скругления */
+    }
+    
+    .about-logo {
+      max-width: 800px;   /* нужная максимальная ширина */
+      width: 100%;        /* чтобы не вылезала за блок */
+      height: auto;       /* правильные пропорции */
     }
 
 
@@ -134,11 +139,43 @@
       border-color: var(--primary);
     }
 
+    .btn-outline-scnd {
+      background: var(--primary);
+      color: var(--primary);
+      border-color: var(--white);
+    }
+
     .btn-outline:hover {
       background: var(--primary);
       color: var(--white);
       text-decoration: none;
     }
+
+    .services-list {
+      list-style: none;      /* убираем стандартные черные точки */
+      margin: 8px 0 0;
+      padding-left: 0;
+    }
+    
+    .services-list li {
+      position: relative;
+      padding-left: 20px;    /* отступ под кружок */
+      margin-bottom: 4px;
+    }
+    
+    /* фиолетовый кружок */
+    .services-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;              /* можно чуть двигать вверх/вниз */
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);   /* фиолетовый цвет */
+    }
+
+
 
     .header-bottom {
       background: var(--primary);
@@ -234,8 +271,6 @@
       max-width: 320px;
       min-height: 160px;
       border-radius: 6px;
-      border: 1px dashed var(--primary);
-      background: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -284,30 +319,40 @@
       margin-bottom: 0;
     }
 
-    {
-      min-height: 180px;
-      border-radius: 6px;
-      border: 1px dashed var(--primary);
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 16px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
     /* INSOLES */
 
+    .insoles-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
     .insoles {
       background: var(--bg-light);
     }
 
-    .insoles p {
-      font-size: 14px;
-      margin-bottom: 10px;
-      max-width: 760px;
+    .insoles-text {
+      flex: 1;
+    }
+
+    .insoles-image-wrap {
+      flex: 0 0 500px; /* ширина колонки с картинкой */
+    }
+
+    .insoles-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* на телефонах пусть станет столбиком */
+    @media (max-width: 768px) {
+      .insoles-inner {
+        flex-direction: column;
+      }
+
+      .insoles-image-wrap {
+        width: 100%;
+      }
     }
 
     /* CENTERS */
@@ -355,7 +400,6 @@
 
     .centers-map {
       border-radius: 6px;
-      border: 1px dashed var(--primary);
       background: var(--bg-light);
       min-height: 220px;
       display: flex;
@@ -467,9 +511,6 @@
           <a href="#centers">Наши центры</a>
           <a href="#contacts">Контакты</a>
         </nav>
-        <form class="search">
-          <input type="text" placeholder="Найти услугу или проблему...">
-        </form>
       </div>
     </div>
   </header>
@@ -490,7 +531,7 @@
         </div>
       </div>
       <div class="hero-media">
-        Здесь можно разместить баннер или коллаж с примерами стелек, стопы и осанки (изображения до/после).
+        <img class="about-logo" src="img/logo.jpg" alt="logo">
       </div>
     </div>
   </section>
@@ -503,23 +544,33 @@
         <div class="about-text">
           <p><strong>Научно‑клинический центр заболеваний стопы и осанки</strong> — клиника, специализирующаяся на лечении и профилактике заболеваний стопы и опорно‑двигательного аппарата у детей и взрослых.</p>
           <p>В центре работают высококвалифицированные ортопеды‑травматологи и остеопаты, которые используют индивидуальный подход к каждому пациенту и современные методы диагностики.</p>
-          <p>Мы предлагаем широкий спектр услуг: изготовление индивидуальных ортопедических стелек, профессиональный массаж и подологические услуги для комплексного ухода за стопами.  </p>
-        </div>
-        <div class="about-media">
-        <img class="about-image" src="img/insoles-kid-1.jpeg" alt="Детские индивидуальные ортопедические стельки">
+	  <h2 class="section-title">Мы предлагаем широкий спектр услуг:</h2>
+          <ul class="services-list">
+            <li>Изготовление индивидуальных ортопедических стелек</li>
+            <li>Профессиональный массаж</li>
+            <li>Подологические услуги для комплексного ухода за стопами</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- INSOLES -->
   <section id="insoles" class="insoles">
-    <div class="container">
+  <div class="container insoles-inner">
+    <div class="insoles-text">
       <h2 class="section-title">Индивидуальные ортопедические стельки</h2>
-      <p>Индивидуальные стельки помогают правильно распределить нагрузку на стопу, уменьшить боль, скорректировать осанку и предотвратить развитие хронических заболеваний опорно‑двигательного аппарата.  </p>
-      <p>Изготовление стелек проводится после детального обследования, с учётом возраста, уровня активности и сопутствующих проблем пациента, с использованием современных материалов и технологий.  </p>
+      <p>Индивидуальные стельки помогают правильно распределить нагрузку на стопу, уменьшить боль, скорректировать осанку и предотвратить развитие хронических заболеваний опорно‑двигательного аппарата.</p>
+      <p>Изготовление стелек проводится после детального обследования, с учётом возраста, уровня активности и сопутствующих проблем пациента, с использованием современных материалов и технологий.</p>
     </div>
-  </section>
+
+    <div class="insoles-image-wrap">
+      <img class="insoles-image"
+           src="img/insoles-kid-1.png"
+           alt="Индивидуальные ортопедические стельки">
+    </div>
+  </div>
+</section>
+
 
   <!-- CENTERS -->
   <section id="centers">
@@ -528,7 +579,7 @@
         <div>
           <h2 class="section-title">Наши центры</h2>
           <div class="section-subtitle">
-            Выберите удобный адрес в Краснодаре и Анапе и запишитесь онлайн.  
+            Запишитесь онлайн! Выберите удобный адрес в Краснодаре и Анапе. 
           </div>
         </div>
         <a href="https://n819431.yclients.com" class="btn btn-primary">
@@ -566,8 +617,7 @@
       </div>
 
       <div class="centers-map" id="contacts">
-        Здесь будет интерактивная карта (Яндекс/Google) с 3 метками:  
-        Краснодар, Рождественская наб., 2; Краснодар, ул. Стахановская, 1/5, к. 1; Анапа, ул. Ленина, 183.  
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af2da1394355fb3ebbe244f320fb09f45fc0cdb238b62e289c40661ec40aad984&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
       </div>
     </div>
   </section>
@@ -576,12 +626,10 @@
   <section class="contacts-short">
     <div class="container contacts-inner">
       <div>
-        <strong>Единый телефон:</strong>
-        <a href="tel:+79181513800">+7 (918) 151‑38‑00</a>
+        <a href="tel:+79181513800" class="btn btn-outline-scnd">+7 (918) 151‑38‑00</a>
       </div>
       <div>
-        <strong>Онлайн‑запись:</strong>
-        <a href="https://n819431.yclients.com">n819431.yclients.com</a>
+        <a href="https://n819431.yclients.com" class="btn btn-outline-scnd">Онлайн‑запись во все центры</a>
       </div>
     </div>
   </section>
