@@ -56,6 +56,14 @@
       padding: 12px 0;
     }
 
+    .about-image {
+      max-width: 400px;   /* нужная максимальная ширина */
+      width: 100%;        /* чтобы не вылезала за блок */
+      height: auto;       /* правильные пропорции */
+      border-radius: 8px; /* по желанию, скругления */
+    }
+
+
     .header-top-inner {
       display: flex;
       align-items: center;
@@ -276,7 +284,7 @@
       margin-bottom: 0;
     }
 
-    .about-media {
+    {
       min-height: 180px;
       border-radius: 6px;
       border: 1px dashed var(--primary);
@@ -501,8 +509,7 @@
           <p>Мы предлагаем широкий спектр услуг: изготовление индивидуальных ортопедических стелек, профессиональный массаж и подологические услуги для комплексного ухода за стопами. [file:2]</p>
         </div>
         <div class="about-media">
-        <img src="img/insoles-kid-1.jpeg"
-             alt="Детские индивидуальные ортопедические стельки">
+        <img class="about-image" src="img/insoles-kid-1.jpeg" alt="Детские индивидуальные ортопедические стельки">
         </div>
       </div>
     </div>
