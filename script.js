@@ -67,14 +67,13 @@ function startRound() {
   scoreEl.textContent = score;
   timerEl.textContent = formatTime(timeLeft);
 
-  // скрываем блок "Время вышло!"
+  // скрываем плашку «Время вышло!» до конца раунда
   afterTimeBlock.classList.add('hidden');
   endMessageEl.textContent = 'Время вышло!';
 
   isRoundActive = true;
 
   if (timerId) clearInterval(timerId);
-
   timerId = setInterval(() => {
     timeLeft--;
     timerEl.textContent = formatTime(timeLeft);
@@ -109,7 +108,7 @@ function goToStart() {
   gameScreen.classList.remove('active');
 }
 
-// свайп + движение круга за пальцем
+// свайп + движение круга
 let startY = null;
 let currentTranslateY = 0;
 
@@ -153,8 +152,8 @@ circle.addEventListener('touchend', () => {
     score++;
     scoreEl.textContent = score;
   }
-  // вниз — только следующее слово
 
+  // вниз — просто следующее слово
   currentIndex++;
   showWord();
 
