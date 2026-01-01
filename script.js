@@ -9,8 +9,12 @@ const newRoundBtn = document.getElementById('new-round-btn');
 const roundTimeInput = document.getElementById('round-time');
 const timerEl = document.getElementById('timer');
 const scoreEl = document.getElementById('score');
+
 const circle = document.getElementById('word-circle');
+const wordEl = document.getElementById('word');
+
 const afterTimeBlock = document.getElementById('after-time');
+const endMessageEl = document.getElementById('end-message');
 
 let currentIndex = 0;
 let score = 0;
@@ -36,14 +40,14 @@ function formatTime(sec) {
 
 function showWord() {
   if (!words || words.length === 0) {
-    circle.textContent = 'Нет слов';
+    wordEl.textContent = 'Нет слов';
     return;
   }
   if (currentIndex >= words.length) {
     currentIndex = 0;
     shuffleWords(words);
   }
-  circle.textContent = words[currentIndex];
+  wordEl.textContent = words[currentIndex];
 }
 
 // старт раунда
@@ -62,11 +66,15 @@ function startRound() {
 
   scoreEl.textContent = score;
   timerEl.textContent = formatTime(timeLeft);
+
+  // скрываем блок "Время вышло!"
   afterTimeBlock.classList.add('hidden');
+  endMessageEl.textContent = 'Время вышло!';
 
   isRoundActive = true;
 
   if (timerId) clearInterval(timerId);
+
   timerId = setInterval(() => {
     timeLeft--;
     timerEl.textContent = formatTime(timeLeft);
@@ -83,8 +91,9 @@ function endRound() {
     timerId = null;
   }
   timerEl.textContent = '00:00';
-  circle.textContent = 'Время вышло!';
   circle.style.transform = 'translateY(0)';
+
+  // показываем сообщение и кнопки только сейчас
   afterTimeBlock.classList.remove('hidden');
 }
 
