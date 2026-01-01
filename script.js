@@ -1,128 +1,143 @@
-const startScreen = document.getElementById("start-screen");
-const gameScreen = document.getElementById("game-screen");
-const startBtn = document.getElementById("start-btn");
-const wordEl = document.getElementById("word");
-const scoreEl = document.getElementById("score");
-const circle = document.getElementById("word-circle");
-const timerEl = document.getElementById("timer");
+// script.js
+const startScreen = document.getElementById('start-screen');
+const gameScreen = document.getElementById('game-screen');
+
+const startBtn = document.getElementById('start-btn');
+const backBtn = document.getElementById('back-btn');
+const backFromEndBtn = document.getElementById('back-from-end-btn');
+const newRoundBtn = document.getElementById('new-round-btn');
+
+const roundTimeInput = document.getElementById('round-time');
+const timerEl = document.getElementById('timer');
+const scoreEl = document.getElementById('score');
+const circle = document.getElementById('word-circle');
+const afterTimeBlock = document.getElementById('after-time');
 
 let currentIndex = 0;
 let score = 0;
-
-// таймер
-let timeLeft = 60; // секунды
 let timerId = null;
+let timeLeft = 60;
+let isRoundActive = false;
 
-// старт игры
-startBtn.addEventListener("click", () => {
-  startScreen.classList.remove("active");
-  gameScreen.classList.add("active");
-  score = 0;
-  scoreEl.textContent = "Счёт: " + score;
-
-  timeLeft = 60;
-  updateTimerText();
-  startTimer();
-
-  shuffleWords();
-  showWord();
-});
-
-// перемешивание слов
-function shuffleWords() {
-  for (let i = words.length - 1; i > 0; i--) {
+// Перемешивание слов (Фишер–Йетс)
+function shuffleWords(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [words[i], words[j]] = [words[j], words[i]];
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
+}
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  const mm = m < 10 ? '0' + m : '' + m;
+  const ss = s < 10 ? '0' + s : '' + s;
+  return mm + ':' + ss;
 }
 
 function showWord() {
+  if (!words || words.length === 0) {
+    circle.textContent = 'Нет слов';
+    return;
+  }
   if (currentIndex >= words.length) {
     currentIndex = 0;
-    shuffleWords();
+    shuffleWords(words);
   }
-  wordEl.textContent = words[currentIndex];
+  circle.textContent = words[currentIndex];
 }
 
-// ===== таймер =====
-function startTimer() {
-  if (timerId) clearInterval(timerId);
+// Старт раунда
+function startRound() {
+  const inputSeconds = parseInt(roundTimeInput.value, 10);
+  timeLeft = isNaN(inputSeconds) ? 60 : Math.max(10, Math.min(inputSeconds, 600));
 
+  roundTimeInput.value = timeLeft;
+
+  startScreen.classList.remove('active');
+  gameScreen.classList.add('active');
+
+  score = 0;
+  currentIndex = 0;
+  shuffleWords(words);
+  showWord();
+
+  scoreEl.textContent = score;
+  timerEl.textContent = formatTime(timeLeft);
+  afterTimeBlock.classList.add('hidden');
+
+  isRoundActive = true;
+
+  if (timerId) clearInterval(timerId);
   timerId = setInterval(() => {
     timeLeft--;
-    updateTimerText();
-
+    timerEl.textContent = formatTime(timeLeft);
     if (timeLeft <= 0) {
-      clearInterval(timerId);
-      timerId = null;
       endRound();
     }
   }, 1000);
 }
 
-function updateTimerText() {
-  const seconds = timeLeft;
-  const s = seconds < 10 ? "0" + seconds : seconds;
-  timerEl.textContent = "00:" + s;
-}
-
 function endRound() {
-  // по окончании минуты просто блокируем свайпы и пишем, что время вышло
-  wordEl.textContent = "Время вышло!";
+  isRoundActive = false;
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = null;
+  }
+  timerEl.textContent = '00:00';
+  circle.textContent = 'Время вышло!';
+  afterTimeBlock.classList.remove('hidden');
 }
 
-// ===== свайпы =====
-let startY = null;
-const SWIPE_THRESHOLD = 60;
+// Возврат на стартовый экран
+function goToStart() {
+  // Остановить таймер
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = null;
+  }
+  isRoundActive = false;
+  timerEl.textContent = formatTime(parseInt(roundTimeInput.value, 10) || 60);
+  startScreen.classList.add('active');
+  gameScreen.classList.remove('active');
+}
 
-circle.addEventListener("touchstart", (e) => {
+// Свайпы
+let startY = null;
+
+circle.addEventListener('touchstart', (e) => {
+  if (!isRoundActive) return;
   const touch = e.touches[0];
   startY = touch.clientY;
 });
 
-circle.addEventListener("touchend", (e) => {
-  // если время вышло — ничего не делаем
-  if (!timerId) return;
-
-  if (startY === null) return;
-
+circle.addEventListener('touchend', (e) => {
+  if (!isRoundActive || startY === null) return;
   const touch = e.changedTouches[0];
   const endY = touch.clientY;
   const diffY = startY - endY;
+  const threshold = 50;
 
-  if (diffY > SWIPE_THRESHOLD) {
-    handleCorrect();
-  } else if (diffY < -SWIPE_THRESHOLD) {
-    handleSkip();
+  if (Math.abs(diffY) < threshold) {
+    startY = null;
+    return;
   }
+
+  if (diffY > 0) {
+    // вверх — отгадано
+    score++;
+    scoreEl.textContent = score;
+  }
+  // вниз — просто следующее слово (счёт не меняем)
+
+  currentIndex++;
+  showWord();
 
   startY = null;
 });
 
-function handleCorrect() {
-  score++;
-  scoreEl.textContent = "Счёт: " + score;
-  flashCircle("up");
-  nextWord();
-}
-
-function handleSkip() {
-  flashCircle("down");
-  nextWord();
-}
-
-function nextWord() {
-  currentIndex++;
-  showWord();
-}
-
-// подсветка
-function flashCircle(direction) {
-  if (direction === "up") {
-    circle.classList.add("swipe-up");
-    setTimeout(() => circle.classList.remove("swipe-up"), 150);
-  } else if (direction === "down") {
-    circle.classList.add("swipe-down");
-    setTimeout(() => circle.classList.remove("swipe-down"), 150);
-  }
-}
+// Клики по кнопкам
+startBtn.addEventListener('click', startRound);
+newRoundBtn.addEventListener('click', startRound);
+backBtn.addEventListener('click', goToStart);
+backFromEndBtn.addEventListener('click', goToStart);
