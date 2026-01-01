@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Alias 18+</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Экран старта -->
@@ -20,14 +21,12 @@
 
   <!-- Экран игры -->
   <div id="game-screen" class="screen">
-    <!-- верхняя панель: таймер, счет, назад -->
     <div id="top-bar">
       <div id="timer">01:00</div>
       <div id="score">0</div>
       <button id="back-btn">Назад</button>
     </div>
 
-    <!-- центр: Отгадано, круг со словом, Пропустить -->
     <div id="center-wrap">
       <div id="status-top" class="status-text">Отгадано</div>
 
@@ -37,7 +36,6 @@
 
       <div id="status-bottom" class="status-text">Пропустить</div>
 
-      <!-- блок, который показывается ТОЛЬКО после окончания времени -->
       <div id="after-time" class="hidden">
         <div id="end-message">Время вышло!</div>
         <div class="after-buttons">
