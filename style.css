@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: #111;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.screen.active {
+  display: flex;
+}
+
+#start-btn {
+  padding: 16px 32px;
+  font-size: 20px;
+  border-radius: 999px;
+  border: none;
+  background: #ff4b4b;
+  color: #fff;
+  cursor: pointer;
+}
+
+#start-btn:active {
+  transform: scale(0.97);
+}
+
+#game-screen {
+  text-align: center;
+  position: relative;
+}
+
+#score {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 18px;
+}
+
+.status-text {
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+#status-top {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  text-align: center;
+}
+
+#status-bottom {
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
+  text-align: center;
+}
+
+#word-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #222;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.2;
+  user-select: none;
+  touch-action: none; /* чтобы не мешал скролл браузера на мобилке */
+}
+
+#word-circle.swipe-up {
+  background: #145214;
+}
+
+#word-circle.swipe-down {
+  background: #521414;
+}
