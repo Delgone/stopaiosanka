@@ -8,23 +8,33 @@
 </head>
 <body>
   <div id="start-screen" class="screen active">
-    <button id="start-btn">Начать</button>
+    <div class="start-panel">
+      <label for="round-time">Время раунда (сек):</label>
+      <input id="round-time" type="number" min="10" max="600" step="5" value="60" />
+      <button id="start-btn">Начать</button>
+    </div>
   </div>
 
   <div id="game-screen" class="screen">
     <div id="top-bar">
       <div id="timer">01:00</div>
-      <div id="score">Счёт: 0</div>
+      <div id="score">0</div>
+      <button id="back-btn" class="small-btn">Назад</button>
     </div>
 
-    <div id="center-wrap">
-      <div id="status-top" class="status-text">Отгадано</div>
+    <div id="labels">
+      <span id="label-pass">Пропустить</span>
+      <span id="label-guess">Отгадано</span>
+    </div>
 
-      <div id="word-circle">
-        <span id="word">Слово</span>
-      </div>
+    <div id="circle-container">
+      <div id="word-circle">Свайпни!</div>
+    </div>
 
-      <div id="status-bottom" class="status-text">Пропустить</div>
+    <div id="after-time" class="hidden">
+      <div id="time-up-text">Время вышло!</div>
+      <button id="new-round-btn">Новый раунд</button>
+      <button id="back-from-end-btn">Назад</button>
     </div>
   </div>
 
