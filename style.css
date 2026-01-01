@@ -48,10 +48,23 @@ body {
   position: relative;
 }
 
-#score {
+/* верхняя панель с таймером и счётом */
+#top-bar {
   position: absolute;
   top: 20px;
   left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+#timer {
+  font-weight: 600;
+}
+
+#score {
   font-size: 18px;
 }
 
@@ -88,7 +101,7 @@ body {
   font-size: 22px;
   line-height: 1.2;
   user-select: none;
-  touch-action: none; /* чтобы не мешал скролл браузера на мобилке */
+  touch-action: none;
 }
 
 #word-circle.swipe-up {
