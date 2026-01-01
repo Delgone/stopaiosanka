@@ -144,7 +144,7 @@ circle.addEventListener('touchend', () => {
     score++;
     scoreEl.textContent = score;
   }
-  // вниз — просто следующее слово
+  // вниз — только следующее слово
 
   currentIndex++;
   showWord();
