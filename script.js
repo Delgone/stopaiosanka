@@ -1,4 +1,3 @@
-// script.js
 const startScreen = document.getElementById('start-screen');
 const gameScreen = document.getElementById('game-screen');
 
@@ -19,7 +18,7 @@ let timerId = null;
 let timeLeft = 60;
 let isRoundActive = false;
 
-// Перемешивание слов (Фишер–Йетс)
+// перемешивание слов
 function shuffleWords(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -47,11 +46,10 @@ function showWord() {
   circle.textContent = words[currentIndex];
 }
 
-// Старт раунда
+// старт раунда
 function startRound() {
   const inputSeconds = parseInt(roundTimeInput.value, 10);
   timeLeft = isNaN(inputSeconds) ? 60 : Math.max(10, Math.min(inputSeconds, 600));
-
   roundTimeInput.value = timeLeft;
 
   startScreen.classList.remove('active');
@@ -86,57 +84,76 @@ function endRound() {
   }
   timerEl.textContent = '00:00';
   circle.textContent = 'Время вышло!';
+  circle.style.transform = 'translateY(0)';
   afterTimeBlock.classList.remove('hidden');
 }
 
-// Возврат на стартовый экран
 function goToStart() {
-  // Остановить таймер
   if (timerId) {
     clearInterval(timerId);
     timerId = null;
   }
   isRoundActive = false;
+  circle.style.transform = 'translateY(0)';
   timerEl.textContent = formatTime(parseInt(roundTimeInput.value, 10) || 60);
   startScreen.classList.add('active');
   gameScreen.classList.remove('active');
 }
 
-// Свайпы
+// свайп + движение круга за пальцем
 let startY = null;
+let currentTranslateY = 0;
 
 circle.addEventListener('touchstart', (e) => {
   if (!isRoundActive) return;
   const touch = e.touches[0];
   startY = touch.clientY;
+  currentTranslateY = 0;
+  circle.style.transition = 'none';
 });
 
-circle.addEventListener('touchend', (e) => {
+circle.addEventListener('touchmove', (e) => {
   if (!isRoundActive || startY === null) return;
-  const touch = e.changedTouches[0];
-  const endY = touch.clientY;
-  const diffY = startY - endY;
-  const threshold = 50;
+  const touch = e.touches[0];
+  const diffY = touch.clientY - startY;
+  currentTranslateY = diffY;
+
+  const maxOffset = 150;
+  const clamped = Math.max(-maxOffset, Math.min(maxOffset, diffY));
+
+  circle.style.transform = `translateY(${clamped}px)`;
+  e.preventDefault();
+});
+
+circle.addEventListener('touchend', () => {
+  if (!isRoundActive || startY === null) return;
+  const threshold = 60;
+  const diffY = currentTranslateY;
+
+  circle.style.transition = 'transform 0.15s ease-out';
+  circle.style.transform = 'translateY(0)';
 
   if (Math.abs(diffY) < threshold) {
     startY = null;
+    currentTranslateY = 0;
     return;
   }
 
-  if (diffY > 0) {
+  if (diffY < 0) {
     // вверх — отгадано
     score++;
     scoreEl.textContent = score;
   }
-  // вниз — просто следующее слово (счёт не меняем)
+  // вниз — просто следующее слово
 
   currentIndex++;
   showWord();
 
   startY = null;
+  currentTranslateY = 0;
 });
 
-// Клики по кнопкам
+// кнопки
 startBtn.addEventListener('click', startRound);
 newRoundBtn.addEventListener('click', startRound);
 backBtn.addEventListener('click', goToStart);
